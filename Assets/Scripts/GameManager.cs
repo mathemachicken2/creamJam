@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,8 +18,14 @@ public class GameManager : MonoBehaviour
     private Transform focusPoint;       // current zoom target
     private bool isFocused = false;
 
+    InputAction exitAction;
+
     void Awake()
     {
+
+        exitAction = new InputAction(binding: "<Keyboard>/escape");
+        exitAction.AddBinding("<Keyboard>/s");
+        exitAction.Enable();
         // Singleton setup
         if (Instance != null && Instance != this)
         {
@@ -36,6 +43,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
+        if (isFocused && exitAction.WasPressedThisFrame())
+        {
+            ToggleFocus(null);
+        }
+
         if (focusPoint != null && isFocused)
         {
             // WORLD SPACE LERP
@@ -55,16 +68,14 @@ public class GameManager : MonoBehaviour
     /// <param name="newFocusPoint"></param>
     public void ToggleFocus(Transform newFocusPoint)
     {
-        if (isFocused && focusPoint == newFocusPoint)
+        if (isFocused)
         {
             // Zoom out
             isFocused = false;
             focusPoint = null;
 
-            // Restore player control
             if (playerMovement != null) playerMovement.enabled = true;
 
-            // Lock cursor again
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -74,10 +85,8 @@ public class GameManager : MonoBehaviour
             focusPoint = newFocusPoint;
             isFocused = true;
 
-            // Freeze player
             if (playerMovement != null) playerMovement.enabled = false;
 
-            // Unlock cursor for UI interaction
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }

@@ -18,12 +18,15 @@ public class PCInteract : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && interactAction.WasPressedThisFrame())
+        if (!GameManager.Instance.IsFocused())
         {
-            GameManager.Instance.ToggleFocus(cameraFocusPoint);
+            if (playerInRange && interactAction.WasPressedThisFrame())
+            {
+                GameManager.Instance.ToggleFocus(cameraFocusPoint);
 
-            if (useText != null)
-                useText.SetActive(false);
+                if (useText != null)
+                    useText.SetActive(false);
+            }
         }
     }
 

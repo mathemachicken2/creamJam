@@ -17,13 +17,16 @@ public class PCUIScreenManager : MonoBehaviour
     public GameObject backButtonMail;
     public GameObject backButtonWeb;
     public GameObject backButtonCreamy;
+    public FakeSearchBar fakeSearchBar;
+    public ReviewViewer reviewViewer;
 
     void Start()
     {
+        creamyBeams.SetActive(false);
         ShowScreen(screensaver);
     }
 
-    // --- Called by UI Buttons (OnClick in Inspector) ---
+    
 
     public void OpenMail()
     {
@@ -33,11 +36,22 @@ public class PCUIScreenManager : MonoBehaviour
     public void OpenWeb()
     {
         ShowScreen(webBrowser);
+
+        if (fakeSearchBar != null)
+            fakeSearchBar.ResetSearch();
     }
 
     public void OpenCreamy()
     {
+        if (fakeSearchBar != null && !fakeSearchBar.IsComplete())
+        {
+            return;
+        }
+
+        fakeSearchBar.ResetSearch();
         ShowScreen(creamyBeams);
+        if (reviewViewer != null)
+            reviewViewer.CloseViewer();
     }
 
     public void GoBack()

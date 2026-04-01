@@ -18,6 +18,7 @@ public class PickUpBox : MonoBehaviour
 
     InputAction interactAction;
 
+   
     void Start()
     {
         interactAction = new InputAction(binding: "<Keyboard>/e");
@@ -47,10 +48,11 @@ public class PickUpBox : MonoBehaviour
 
 
 
-            if (creamPrefab != null)
-                Instantiate(creamPrefab, transform.position, Quaternion.identity);
+            
+                GameObject creamInstance = Instantiate(creamPrefab, transform.position, Quaternion.identity);
 
-           
+            
+
             Destroy(gameObject);
         }
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 
 public class PickUpBox : MonoBehaviour
@@ -9,6 +10,7 @@ public class PickUpBox : MonoBehaviour
     public GameObject particlePrefab;
     [SerializeField] GameObject particlePrefab1;
     public GameObject creamPrefab;
+    [SerializeField] GameObject letterPrefab;
     public GameObject useText;
 
     [SerializeField] Transform cameraFocusPoint;
@@ -49,9 +51,10 @@ public class PickUpBox : MonoBehaviour
 
 
             
-                GameObject creamInstance = Instantiate(creamPrefab, transform.position, Quaternion.identity);
+                GameObject creamInstance = Instantiate(creamPrefab, transform.position + new Vector3(0, -.3f,0), Quaternion.identity);
+                GameObject letterInstance = Instantiate(letterPrefab, transform.position + new Vector3(0, -.3f, -.6f), Quaternion.identity);
 
-            
+
 
             Destroy(gameObject);
         }

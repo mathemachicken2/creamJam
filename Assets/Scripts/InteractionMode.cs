@@ -1,24 +1,23 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractionMode : MonoBehaviour
 {
-    [Header("References")]
     public MonoBehaviour cameraController;
-
     private bool isInteracting = false;
 
     void Update()
     {
         if (!isInteracting) return;
 
-        // Exit interaction using same style (simple key check only when active)
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.S))
+        // Exit zoom / interaction with S only
+        if (Keyboard.current.sKey.wasPressedThisFrame)
         {
+            Debug.Log("Exiting interaction mode via S key.");
             ExitInteraction();
         }
     }
 
-    // Call this from your EXISTING input logic (E key)
     public void EnterInteraction()
     {
         if (isInteracting) return;

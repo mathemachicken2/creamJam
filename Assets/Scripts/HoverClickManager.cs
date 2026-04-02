@@ -34,7 +34,7 @@ public class HoverClickManager : MonoBehaviour
             if (hover != null && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 if (GameManagerBox.Instance != null && hover.objectSprite != null)
-                    GameManagerBox.Instance.ShowPrefabUI(hover.objectSprite);
+                    GameManagerBox.Instance.ShowPrefabUI(hover.objectSprite, hover.gameObject);
             }
         }
         else

@@ -24,6 +24,13 @@ public class HoverHighlight : MonoBehaviour
         // Register with GameManager so it can assign highlightMaterial if needed
         if (GameManagerBox.Instance != null)
             GameManagerBox.Instance.RegisterInteractive(this);
+
+        
+    }
+    public void OnClickPrefab()
+    {
+        if (GameManagerBox.Instance != null)
+            GameManagerBox.Instance.ShowPrefabUI(objectSprite, gameObject);
     }
 
     public void SetHighlight()

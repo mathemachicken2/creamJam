@@ -13,6 +13,7 @@ public class ReviewViewer : MonoBehaviour
 
     private int currentIndex = 0;
 
+    public bool FinishedAllImages { get; private set; } = false;
     public void OpenViewer(Sprite[] newImages)
     {
         if (newImages == null || newImages.Length == 0) return;
@@ -39,7 +40,18 @@ public class ReviewViewer : MonoBehaviour
 
     public void NextImage()
     {
-        currentIndex = (currentIndex + 1) % images.Length;
+        if (images == null || images.Length == 0) return;
+
+        currentIndex++;
+
+        if (currentIndex >= images.Length)
+        {
+            currentIndex = images.Length - 1;
+
+            // Notify that this button/list is fully viewed
+            ReviewProgressTracker.Instance.ButtonCompleted();
+        }
+
         ShowImage();
     }
 
@@ -47,7 +59,7 @@ public class ReviewViewer : MonoBehaviour
     {
         currentIndex--;
         if (currentIndex < 0)
-            currentIndex = images.Length - 1;
+            currentIndex = 0; // stay on first image
 
         ShowImage();
     }

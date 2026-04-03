@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PhoneUI : MonoBehaviour
 {
@@ -119,6 +120,7 @@ public class PhoneUI : MonoBehaviour
         finalImage.SetActive(true);
 
         yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("MainMenu");
     }
 
     private System.Collections.IEnumerator FadeBlack(float startAlpha, float endAlpha, float duration)

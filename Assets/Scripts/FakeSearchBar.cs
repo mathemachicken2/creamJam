@@ -7,7 +7,7 @@ public class FakeSearchBar : MonoBehaviour
 {
     public TMP_Text searchText; // TMP instead of UI Text
 
-    private string targetText = "CreamBeam.com";
+    private string targetText = "glossygoat.com";
     private int currentIndex = 0;
 
     private InputAction anyKeyAction;

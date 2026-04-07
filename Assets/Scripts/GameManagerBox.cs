@@ -99,6 +99,7 @@ public class GameManagerBox : MonoBehaviour
 
                 // Fade in
                 yield return StartCoroutine(FadeImage(img, 0f, 1f));
+                AudioManager.Instance.Play("ApplyCream");
             }
         }
 

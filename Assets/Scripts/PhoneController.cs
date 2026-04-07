@@ -144,6 +144,7 @@ public class PhoneUI : MonoBehaviour
     }
     private void InitializePhone()
     {
+        AudioManager.Instance.Play("OpenPhone");
         hiddenPos = new Vector2(phoneBase.anchoredPosition.x, -phoneBase.rect.height);
         showPos = new Vector2(phoneBase.anchoredPosition.x, visibleY);
 
@@ -153,6 +154,7 @@ public class PhoneUI : MonoBehaviour
 
     private void OpenApp()
     {
+        
         revealImage.SetActive(true);
         StartCoroutine(EndSequence());
     }

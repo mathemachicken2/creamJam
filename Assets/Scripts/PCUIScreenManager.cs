@@ -63,6 +63,7 @@ public class PCUIScreenManager : MonoBehaviour
 
     void ShowScreen(GameObject screen)
     {
+        AudioManager.Instance.Play("Click");
         // Turn off all screens
         screensaver.SetActive(false);
         mailWindow.SetActive(false);

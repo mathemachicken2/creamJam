@@ -33,6 +33,9 @@ public class PickUpBox : MonoBehaviour
         if (playerInRange && !pickedUp && interactAction.WasPressedThisFrame())
         {
             pickedUp = true;
+
+            AudioManager.Instance.Play("Pickup");
+
             useText.SetActive(false);
             GameManager.Instance.ToggleFocus(cameraFocusPoint);
 

@@ -43,6 +43,8 @@ public class FakeSearchBar : MonoBehaviour
         {
             searchText.text += targetText[currentIndex];
             currentIndex++;
+
+            AudioManager.Instance.Play("Typing");
         }
     }
     IEnumerator TypeSequence()

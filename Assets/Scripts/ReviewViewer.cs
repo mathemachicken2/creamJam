@@ -43,13 +43,14 @@ public class ReviewViewer : MonoBehaviour
         if (images == null || images.Length == 0) return;
 
         currentIndex++;
-
+        AudioManager.Instance.Play("Next");
         if (currentIndex >= images.Length)
         {
             currentIndex = images.Length - 1;
 
             // Notify that this button/list is fully viewed
             ReviewProgressTracker.Instance.ButtonCompleted();
+            
         }
 
         ShowImage();

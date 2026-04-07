@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
 
         exitAction = new InputAction(binding: "<Keyboard>/escape");
-        exitAction.AddBinding("<Keyboard>/s");
+        
         exitAction.Enable();
         // Singleton setup
         if (Instance != null && Instance != this)

@@ -39,7 +39,7 @@ public class PickUpBox : MonoBehaviour
             useText.SetActive(false);
             GameManager.Instance.ToggleFocus(cameraFocusPoint);
 
-            
+            GameManager.Instance.HideStartText();
 
             if (particlePrefab != null)
             {

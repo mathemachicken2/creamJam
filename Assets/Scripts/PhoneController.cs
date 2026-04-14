@@ -57,6 +57,7 @@ public class PhoneUI : MonoBehaviour
         if (ReviewProgressTracker.Instance.AllButtonsCompleted() && !hasShownPrompt)
         {
             tabPromptPanel.SetActive(true);
+            
             hasShownPrompt = true;
         }
         // Only show prompt and allow Tab if all buttons/lists are done
@@ -67,6 +68,7 @@ public class PhoneUI : MonoBehaviour
             if (tabPromptPanel.activeSelf)
             {
                 tabPromptPanel.SetActive(false);
+                
                 return; // prevent ESC from affecting other things this frame
             }
         }
@@ -154,7 +156,7 @@ public class PhoneUI : MonoBehaviour
 
     private void OpenApp()
     {
-        
+        AudioManager.Instance.Play("Click");
         revealImage.SetActive(true);
         StartCoroutine(EndSequence());
     }

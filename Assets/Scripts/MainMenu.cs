@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     // Play button
     public void PlayGame()
     {
+        AudioManager.Instance.StopAll();
         SceneManager.LoadScene("SampleScene");
     }
 

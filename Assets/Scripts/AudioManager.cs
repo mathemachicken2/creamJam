@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
+    
 
     [System.Serializable]
     public class Sound
@@ -42,6 +43,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopAll()
+    {
+        audioSource.Stop();
+    }
     public void Play(string soundName)
     {
         if (soundDictionary.TryGetValue(soundName, out Sound sound))

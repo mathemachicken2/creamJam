@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     InputAction exitAction;
 
+    public GameObject startText;
+
     void Awake()
     {
 
@@ -39,6 +41,10 @@ public class GameManager : MonoBehaviour
 
         originalLocalPos = playerCamera.localPosition;
         originalLocalRot = playerCamera.localRotation;
+    }
+    void Start()
+    {
+        startText.SetActive(true);
     }
 
     void Update()
@@ -94,5 +100,10 @@ public class GameManager : MonoBehaviour
     public bool IsFocused()
     {
         return isFocused;
+    }
+    public void HideStartText()
+    {
+        if (startText != null)
+            startText.SetActive(false);
     }
 }
